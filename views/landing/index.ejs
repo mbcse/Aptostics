@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="">
+  <link rel="icon" type="image/png" href="">
+  <%- include('../includes/dashboard/headFiles')%>
+</head>
+
+<body class="">
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+       
+      </div>
+    </div>
+  </div>
+  <main class="main-content  mt-0">
+    <section>
+      <div class="page-header min-vh-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column mx-lg-0 mx-auto">
+              <div class="card card-plain">
+                <div class="card-header pb-0 text-center">
+                  <h5 class="font-weight-bolder text-center">Select Chain</h5>
+
+                  <div class="dropdown ">
+                    <a class="btn btn-secondary dropdown-toggle ml-6" href="#" role="button" id="chainList" data-bs-toggle="dropdown" aria-expanded="false">
+                      APTOS
+                    </a>
+                  
+                    <ul class="dropdown-menu" aria-labelledby="chainList">
+                      <li><a class="dropdown-item" value="APTOS" href="#">APTOS</a></li>
+                      <!-- <li><a class="dropdown-item" value="GOERLI" href="#">GOERLI</a></li>
+                      <li><a class="dropdown-item" value="POLYGON" href="#">POLYGON</a></li>
+                      <li><a class="dropdown-item" value="MANTLE" href="#">MANTLE MAINNET</a></li>
+                      <li><a class="dropdown-item" value="MANTLE_TESTNET" href="#">MANTLE TESTNET</a></li>
+                      <li><a class="dropdown-item" value="FANTOM" href="#">FVM_TESTNET</a></li>
+                      <li><a class="dropdown-item" value="FANTOM" href="#">FVM_MAINNET</a></li>
+                      <li><a class="dropdown-item" value="MUMBAI"  href="#">POLYGON TESTNET(MUMBAI)</a></li>
+                      <li><a class="dropdown-item" value="CRONOS" href="#">CRONOS</a></li>
+                      <li><a class="dropdown-item" value="CRONOS_TESTNET" href="#">CRONOS TESTNET</a></li>
+                      <li><a class="dropdown-item" value="AVALANCHE" href="#">AVALANCHE </a></li>
+                      <li><a class="dropdown-item" value="FUJI" href="#">AVALANCHE TESTNET(FUJI)</a></li>
+                      <li><a class="dropdown-item" value="BSC" href="#">BINANCE</a></li>
+                      <li><a class="dropdown-item" value="BSC_TESTNET" href="#">BINANCE TESTNET</a></li>
+                      <li><a class="dropdown-item" value="FANTOM" href="#">FANTOM</a></li> -->
+                    </ul>
+                  </div>
+                  
+                  <h3 class="font-weight-bolder text-center">Connect Wallet</h3>
+                </div>
+                <div class="card-body">
+                    <div class="text-center">
+                      <button type="button" id="connect-wallet-button" class="btn btn-lg btn-primary btn-lg w-100 mt-0 mb-0">Connect</button>
+                    </div>
+                    <br><br>
+                    <h4 class="font-weight-bolder text-center">Powered By:</h4>
+                    <div style="display: flex; justify-content: space-between;">
+                        <img style="width:200px" src="data:image/png;base64,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" alt="">
+                        <img style="width:200px" src="https://s2.coinmarketcap.com/static/img/coins/200x200/9111.png" alt=""> 
+                        <img style="width:200px" src="https://assets-global.website-files.com/606f63778ec431ec1b930f1f/6079921e2ba9cc10f9a14985_what%2Bis%2Baave.jpg" alt=""> 
+
+                        
+                      </div>
+                    
+              </div>
+             
+              </div>
+            </div>
+            <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 end-0 text-center justify-content-center flex-column">
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center overflow-hidden" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXfHGyNPjhF8zuA83LmnRXKmlH6L4AfEuAIQ&usqp=CAU');
+          background-size: cover;">
+                <span class="mask bg-gradient-primary opacity-6"></span>
+                <h4 class="mt-5 text-white font-weight-bolder position-relative">"Aptostics"</h4>
+                <p class="text-white position-relative">Track and Visualize your Aptos wallet and Onchain data</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <%- include('../includes/landingPage/jsFiles')%>
+  <script src="/landing/app/walletLogin.js"></script>
+</body>
+
+</html>

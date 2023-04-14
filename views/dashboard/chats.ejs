@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href="">
+  <link rel="icon" type="image/png" href="">
+  <%- include('../includes/dashboard/headFiles')%>
+  
+</head>
+
+<body class="g-sidenav-show   bg-gray-100">
+  <div class="min-height-300 bg-primary position-absolute w-100"></div>
+  <%- include('../includes/dashboard/sidebar')%>
+
+  <main class="main-content position-relative border-radius-lg ">
+    <!-- Navbar -->
+    <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur" data-scroll="false">
+      <div class="container-fluid py-1 px-3">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+            <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="javascript:;">Pages</a></li>
+            <li class="breadcrumb-item text-sm text-white active" aria-current="page">NFT's</li>
+          </ol>
+          <h6 class="font-weight-bolder text-white mb-0">NFT DATA</h6>
+        </nav>
+        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+            <div class="input-group">
+              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Type here...">
+            </div>
+          </div>
+          <ul class="navbar-nav  justify-content-end">
+            <li class="dropdown">
+              <a class="btn btn-sm btn-success dropdown-toggle m-3" href="#" role="button" id="chainList" data-bs-toggle="dropdown" aria-expanded="false">
+                ETHEREUM
+              </a>
+            
+              <ul class="dropdown-menu" aria-labelledby="chainList">
+                <li><a class="dropdown-item" value="ETHEREUM" href="/me/dashboard/nft/ETHEREUM/<%=userAddress%>">ETHEREUM</a></li>
+                <li><a class="dropdown-item" value="GOERLI" href="/me/dashboard/nft/GOERLI/<%=userAddress%>">GOERLI</a></li>
+                <li><a class="dropdown-item" value="POLYGON" href="/me/dashboard/nft/POLYGON/<%=userAddress%>">POLYGON</a></li>
+                <li><a class="dropdown-item" value="MUMBAI"  href="/me/dashboard/nft/MUMBAI/<%=userAddress%>">POLYGON TESTNET(MUMBAI)</a></li>
+                <li><a class="dropdown-item" value="CRONOS" href="/me/dashboard/nft/CRONOS/<%=userAddress%>">CRONOS</a></li>
+                <li><a class="dropdown-item" value="CRONOS_TESTNET" href="/me/dashboard/nft/CRONOS_TESTNET/<%=userAddress%>">CRONOS TESTNET</a></li>
+                <li><a class="dropdown-item" value="AVALANCHE" href="/me/dashboard/nft/AVALANCHE/<%=userAddress%>">AVALANCHE </a></li>
+                <li><a class="dropdown-item" value="FUJI" href="/me/dashboard/nft/FUJI/<%=userAddress%>">AVALANCHE TESTNET(FUJI)</a></li>
+                <li><a class="dropdown-item" value="BSC" href="/me/dashboard/nft/BSC/<%=userAddress%>">BINANCE</a></li>
+                <li><a class="dropdown-item" value="BSC_TESTNET" href="/me/dashboard/nft/BSC_TESTNET/<%=userAddress%>">BINANCE TESTNET</a></li>
+                <li><a class="dropdown-item" value="FANTOM" href="/me/dashboard/nft/FANTOM/<%=userAddress%>">FANTOM</a></li>
+              </ul>
+            </li>
+            <li class="nav-item d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
+                <i class="fa fa-user me-sm-1"></i>
+                <span class="d-sm-inline d-none"><%=userAddress%></span>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                  <i class="sidenav-toggler-line bg-white"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="container-fluid py-4">
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Your NFT's</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">NFT ID</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Name</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Symbol</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">NFT Type</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">NFT Contract Address</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Amount</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Metadata URL</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% nftData.nfts.map((nft)=>{ %>
+                    <tr>
+                      <td>
+                        <p class="text-center text-xs font-weight-bold mb-0"><%=nft.tokenId%></p>
+                      </td>
+                      <td>
+                        <p class="text-center text-xs font-weight-bold mb-0"><%=nft.name%></p>
+                      </td>
+
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold"><%=nft.symbol%></span>
+                      </td>
+                      <td class="align-middle text-center text-sm">
+                        <span class="badge badge-sm bg-gradient-warning"><%=nft.contractType%></span>
+                      </td>
+                      <td class="align-middle text-center">
+                        <a href="<%=explorerLink%>/address/<%=nft.tokenAddress%>" class="text-primary text-xs font-weight-bold"><%=nft.tokenAddress%></a>
+                      </td>
+                      <td class="align-middle text-center">
+                        <span class="text-secondary text-xs font-weight-bold"><%=nft.amount%></span>
+                      </td>
+                      <td class="align-middle text-start">
+                        <a  href="<%=nft.tokenUri%>" class="text-primary text-xs font-weight-bold"><%=nft.tokenUri%></a>
+                      </td>
+                      <td class="align-middle text-center">
+                        <button class="badge badge-sm bg-gradient-danger" data-bs-toggle="modal"data-bs-target="#modal<%=nft.tokenId%>">Visualize Metadata</button>
+                      </td>
+                      <!-- Modal -->
+                      <div class="modal fade ms-7 mt-5" id="modal<%=nft.tokenId%>" tabindex="-9" style="z-index: 100000000;" role="dialog" aria-labelledby="modal<%=nft.tokenId%>Title" aria-hidden="true">
+                        <div class="modal-dialog mw-100 w-75">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Metadata Details</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <div class="d-flex">
+                                <div class="col-6 m-1">
+                                  <h6 class="text-center p-2 badge-sm bg-gradient-warning">Asset Media</h6>
+                                  <img src="<%=nft.tokenMetadata && nft.tokenMetadata.image%> " class="img-fluid" alt="Media Could Not Load">
+                                </div>
+                                <div class="col-6 m-1">
+                                  <h6 class="text-center p-2 badge-sm bg-gradient-info">Asset Data</h6>
+                                  <div class="d-flex flex-column fs-6 m-2">
+                                    <div class="d-flex justify-content-start" style="gap:10px">
+                                      <p class="col-3">Name: </p>
+                                      <p class="col-9"><%=nft.tokenMetadata && nft.tokenMetadata.name%></p>
+                                    </div>
+                                    <div class="d-flex justify-content-start" style="gap:10px">
+                                      <p class="col-3">Description: </p>
+                                      <p class="col-9"><%=nft.tokenMetadata && nft.tokenMetadata.description%></p>
+                                    </div>
+                                    <div class="d-flex justify-content-start" style="gap:10px">
+                                      <p class="col-3">Image URL: </p>
+                                      <p class="col-9"><%=nft.tokenMetadata && nft.tokenMetadata.image%></p>
+                                    </div>
+                                    <div class="d-flex justify-content-start" style="gap:10px">
+                                      <p class="col-3">Animation URL: </p>
+                                      <p class="col-9"><%=nft.tokenMetadata && (nft.tokenMetadata.animation_url || "NOT FOUND") %></p>
+                                    </div>
+                                    <div class="d-flex justify-content-start" style="gap:10px">
+                                      <p class="col-3">External url: </p>
+                                      <p class="col-9"><%=nft.tokenMetadata && nft.tokenMetadata.external_url%></p>
+                                    </div>
+                                    <h6 class="text-center">Attributes</h6>
+                                    <div class="">
+                                      <% if(nft.tokenMetadata && nft.tokenMetadata.attributes){%>
+                                        <% nft.tokenMetadata.attributes.map((attribute)=>{ %>
+                                          <div class="d-flex justify-content-start" style="gap:10px">
+                                            <p class="col-3"><%=attribute.trait_type%>: </p>
+                                            <p class="col-9"><%=attribute.value%></p>
+                                          </div>
+                                        <%})%>  
+                                      <%} else if(nft.tokenMetadata && nft.tokenMetadata.traits) {%>  
+                                        <% nft.tokenMetadata.traits.map((attribute)=>{ %>
+                                          <div class="d-flex justify-content-start" style="gap:10px">
+                                            <p class="col-3"><%=attribute.trait_type%>: </p>
+                                            <p class="col-9"><%=attribute.value%></p>
+                                          </div>
+                                        <%})%>  
+                                      <%}%>  
+                                   </div>  
+                                </div>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </tr>
+                    
+                  <%})%>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>NFT Transfers</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Tx Type</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">NFT ID</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Name</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Symbol</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">NFT Type</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">NFT Contract Address</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">FROM Address</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">To Address</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Amount</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder">Transaction Hash</th>
+                    </tr>
+                  </thead>
+                  <tbody id="nft-transfers">
+                   
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer pt-3  ">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div class="copyright text-center text-sm text-muted text-lg-start">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>,
+                made with <i class="fa fa-heart"></i> by
+                <a href="" class="font-weight-bold" target="_blank">web3.me</a>
+                for a better web.
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <%- include('../includes/dashboard/jsFiles')%>
+  <script>
+    const chain = "<%- chain %>"
+    // eslint-disable-next-line quotes
+    const address = "<%- userAddress %>"
+    const explorerLink = "<%=explorerLink%>"
+  </script>
+  <script src="/dashboard/app/nft.js"></script>
+</body>
+
+</html>
